@@ -11,6 +11,6 @@ namespace AirlinesPassagemApi.Models
         public string Sigla { get; set; }
         public string Nome { get; set; }
         public Endereco Endereco { get; set; }
-        public string LoguinUser { get; set; }
+        public string LoginUser { get; set; }
     }
 }

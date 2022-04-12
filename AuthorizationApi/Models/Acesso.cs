@@ -1,15 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace AirlinesPassagemApi.Models
+namespace AuthorizationApi.Models
 {
-    public class Aeronave
+    public class Acesso
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; private set; } = ObjectId.GenerateNewId().ToString();
-        public string Nome { get; set; }
-        public int Capacidade { get; set; }
-        public string LoginUser { get; set; }
+        public string Descricao { get; set;}
     }
 }

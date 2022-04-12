@@ -16,6 +16,6 @@ namespace AirlinesPassagemApi.Models
         public DateTime DataCadastro { get; private set; } = DateTime.Now;
         public decimal ValorTotal { get; set; }
         public decimal PercentualDesconto { get; set; }
-        public string LoguinUser { get; set; }
+        public string LoginUser { get; set; }
     }
 }

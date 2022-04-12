@@ -14,6 +14,6 @@ namespace AirlinesPassagemApi.Models
         public Aeronave Aeronave { get; set; }
         public DateTime HorarioEmbarque { get; set; }
         public DateTime HorarioDesembarque { get; set; }
-        public string LoguinUser { get; set; }
+        public string LoginUser { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace AirlinesPassagemApi.Models
         public Aeroporto Destino { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataInclusao { get; private set; } = DateTime.Now;
-        public string LoguinUser { get; set; }
+        public string LoginUser { get; set; }
     }
 }
