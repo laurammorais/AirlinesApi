@@ -9,12 +9,13 @@ namespace AirlinesPassagemApi.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; private set; } = ObjectId.GenerateNewId().ToString();
-        public decimal Preco => PrecoBase.Valor - PrecoBase.Valor * (PercentualDesconto / 100);
-        public DateTime DataCadastro { get; private set; } = DateTime.Now;
-        public Classe Classe { get; set; }
-        public PrecoBase PrecoBase { get; set; }
-        public decimal PercentualDesconto { get; set; }
-        public Passageiro Passageiro { get; set; }
         public Voo Voo { get; set; }
+        public Passageiro Passageiro { get; set; }
+        public PrecoBase PrecoBase { get; set; }
+        public Classe Classe { get; set; }
+        public DateTime DataCadastro { get; private set; } = DateTime.Now;
+        public decimal ValorTotal { get; set; }
+        public decimal PercentualDesconto { get; set; }
+        public string LoguinUser { get; set; }
     }
 }

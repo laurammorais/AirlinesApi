@@ -7,9 +7,10 @@ namespace AirlinesPrecoBaseApi.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string Id { get; private set; } = ObjectId.GenerateNewId().ToString();
         public string Sigla { get; set; }
         public string Nome { get; set; }
         public Endereco Endereco { get; set; }
+        public string LoguinUser { get; set; }
     }
 }
