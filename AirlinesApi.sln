@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirlinesConsole", "Airlines
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthorizationApi", "AuthorizationApi\AuthorizationApi.csproj", "{552ADDCF-A626-46B2-B76A-413E17A6B0B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesTest", "AirlinesTest\AirlinesTest.csproj", "{0012049E-26CD-4CCB-B558-52AB47709833}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirlinesTest", "AirlinesTest\AirlinesTest.csproj", "{0012049E-26CD-4CCB-B558-52AB47709833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesLogApi", "AirlinesLogApi\AirlinesLogApi.csproj", "{8237A237-126E-409E-80E4-DD360BDE98FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesLogConsumer", "AirlinesLogConsumer\AirlinesLogConsumer.csproj", "{BF9F8367-BD48-4056-B864-9B3B08F50A2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{0012049E-26CD-4CCB-B558-52AB47709833}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0012049E-26CD-4CCB-B558-52AB47709833}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0012049E-26CD-4CCB-B558-52AB47709833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8237A237-126E-409E-80E4-DD360BDE98FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8237A237-126E-409E-80E4-DD360BDE98FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8237A237-126E-409E-80E4-DD360BDE98FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8237A237-126E-409E-80E4-DD360BDE98FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF9F8367-BD48-4056-B864-9B3B08F50A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF9F8367-BD48-4056-B864-9B3B08F50A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF9F8367-BD48-4056-B864-9B3B08F50A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF9F8367-BD48-4056-B864-9B3B08F50A2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

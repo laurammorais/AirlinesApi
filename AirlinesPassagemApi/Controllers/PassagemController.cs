@@ -2,6 +2,7 @@
 using System.Linq;
 using AirlinesPassagemApi.Models;
 using AirlinesPassagemApi.ModelsInput;
+using AirlinesPassagemApi.Producers;
 using AirlinesPassagemApi.Services;
 using AirlinesVooApi.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -38,9 +39,16 @@ namespace AirlinesPassagemApi.Controllers
         [Authorize]
         public ActionResult<Passagem> Get(string id)
         {
+            LogProducer.AddLog("Buscando Passagem.");
+
             var passagem = _passagemService.Get(id);
             if (passagem == null)
+            {
+                LogProducer.AddLog("Passagem não encontrada.");
                 return NotFound();
+            }
+
+            LogProducer.AddLog("Passagem encontrada com sucesso!");
             return passagem;
         }
 
@@ -49,6 +57,8 @@ namespace AirlinesPassagemApi.Controllers
         [Authorize]
         public ActionResult<Passagem> Post([FromBody] PassagemInput passagemInput)
         {
+            LogProducer.AddLog("Criando nova Passagem.");
+
             var passageiro = _passageiroService.Get(passagemInput.CpfPassageiro);
             if (passageiro == null)
                 return NotFound("Passageiro não cadastrado em nossa base de dados");
@@ -63,7 +73,7 @@ namespace AirlinesPassagemApi.Controllers
 
             var precoBaseAtual = precosBase.OrderByDescending(x => x.DataInclusao).First();
 
-            return _passagemService.Create(
+            var passagem = _passagemService.Create(
                  new Passagem
                  {
                      Passageiro = passageiro,
@@ -72,6 +82,9 @@ namespace AirlinesPassagemApi.Controllers
                      Classe = passagemInput.Classe,
                      PercentualDesconto = passagemInput.PercentualDesconto
                  });
+
+            LogProducer.AddLog("Passagem criada com sucesso!");
+            return passagem;
         }
 
 
@@ -80,11 +93,17 @@ namespace AirlinesPassagemApi.Controllers
         [Authorize]
         public ActionResult Delete(string id)
         {
+            LogProducer.AddLog("Removendo Passagem.");
+            
             var passagem = _passagemService.Get(id);
             if (passagem == null)
+            {
+                LogProducer.AddLog("Passagem não cadastrada em nossa base de dados");
                 return NotFound("Passagem não cadastrada em nossa base de dados");
+            }
 
             _passagemService.Remove(id);
+            LogProducer.AddLog("Passagem removida com sucesso!");
             return Ok();
         }
     }

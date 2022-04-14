@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AirlinesVooApi.Models;
 using AirlinesVooApi.ModelsInput;
+using AirlinesVooApi.Producers;
 using AirlinesVooApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,9 +31,16 @@ namespace AirlinesVooApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<Voo> Get(string id)
         {
+            LogProducer.AddLog("Buscando Voo.");
+
             var voo = _vooService.Get(id);
             if (voo == null)
+            {
+                LogProducer.AddLog("Voo não encontrado.");
                 return NotFound();
+            }
+
+            LogProducer.AddLog("Voo encontrado com sucesso!");
             return voo;
         }
 
@@ -40,6 +48,8 @@ namespace AirlinesVooApi.Controllers
         [HttpPost]
         public ActionResult<Voo> Post([FromBody] VooInput vooInput)
         {
+            LogProducer.AddLog("Criando novo Voo.");
+
             var origem = _aeroportoService.Get(vooInput.OrigemSigla);
             if (origem == null)
                 return NotFound("Aeroporto de Origem não cadastrados em nossa base de dados");
@@ -52,7 +62,7 @@ namespace AirlinesVooApi.Controllers
             if (aeronave == null)
                 return NotFound("Aeronave não cadastrada em nossa base de dados");
 
-            return _vooService.Create(new Voo
+            var voo = _vooService.Create(new Voo
             {
                 Origem = origem,
                 Destino = destino,
@@ -60,16 +70,24 @@ namespace AirlinesVooApi.Controllers
                 HorarioEmbarque = vooInput.HorarioEmbarque,
                 Aeronave = aeronave
             });
+
+            LogProducer.AddLog("Voo criado com sucesso!");
+            return voo;
         }
 
         // PUT api/<VooController>/5
         [HttpPut("{id}")]
         public ActionResult Put(string id, [FromBody] VooInput vooInput)
         {
+            LogProducer.AddLog("Alterando Voo.");
+
             var voo = _vooService.Get(id);
 
             if (voo == null)
+            {
+                LogProducer.AddLog("Voo não localizado.");
                 return NotFound();
+            }
 
             var origem = _aeroportoService.Get(vooInput.OrigemSigla);
             if (origem == null)
@@ -92,6 +110,7 @@ namespace AirlinesVooApi.Controllers
                 Aeronave = aeronave
             });
 
+            LogProducer.AddLog("Voo alterado com sucesso!");
             return Ok();
         }
 
@@ -99,10 +118,16 @@ namespace AirlinesVooApi.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(string id)
         {
+            LogProducer.AddLog("Removendo Voo.");
+            
             var vooGet = _vooService.Get(id);
             if (vooGet == null)
+            {
+                LogProducer.AddLog("Voo não localizado!");
                 return NotFound();
+            }
             _vooService.Remove(id);
+            LogProducer.AddLog("Voo removido com sucesso!");
             return Ok();
         }
     }
