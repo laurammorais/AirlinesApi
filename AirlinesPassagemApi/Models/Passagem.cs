@@ -8,7 +8,7 @@ namespace AirlinesPassagemApi.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; private set; } = ObjectId.GenerateNewId().ToString();
+        public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
         public decimal Preco => PrecoBase.Valor - PrecoBase.Valor * (PercentualDesconto / 100);
         public DateTime DataCadastro { get; private set; } = DateTime.Now;
         public Classe Classe { get; set; }
